@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@use "venteChaussureVariables" as isep;
+
+
+@use "../node_modules/bootstrap/scss/bootstrap.scss" as bt with(
+    $primary: isep.$marronIsep,
+    $secondary: isep.$beigeIsep
+) ; 
+
+
+.titre{
+   @extend .bg-success;
+   @extend .h1;
+   @extend .text-light;
+   @extend .p-4;
+   @extend .rounded-4;
+   text-decoration: underline;
+}
+
+.entete{
+    @extend .fixed-top; @extend .bg-primary;
+    @extend .text-light; height: isep.$hauteurEntete;
+}
+.contenu{
+    margin-top: isep.$hauteurEntete;
+    margin-bottom: isep.$hauteurFooter;
+}
+.piedPage{
+    @extend .fixed-bottom; @extend .bg-info; 
+    @extend .text-light;
+    height: isep.$hauteurFooter;
+}
+
+.lignePaire{
+    background-color: lighten(bt.$primary, 60%);
+    &:hover{
+        background-color: lighten(bt.$primary, 40%);
+        cursor: pointer;
+    }
+}
+
+.ligneImpaire{
+    background-color: lighten(bt.$success, 50%);
+    &:hover{
+        background-color: lighten(bt.$success, 30%);
+    }
+
+}
+
+

@@ -1,0 +1,36 @@
+<div >
+    <div class="titre">Liste des marques</div>
+    <div>
+        @for (marque of marques; 
+            track marque.id; 
+            let idx=$index;
+            let paire=$even;
+            let impaire=$odd;
+            ) {
+            <div 
+                class="py-1" 
+                [class.ligneImpaire]="impaire"
+                [class.lignePaire]="paire">
+                <div>{{marque.nom}}</div>
+                <div>
+                    Est paire : {{paire}}<br/>
+                    Est impaire : {{impaire}}<br/>
+                    <span>N°</span>:
+                    &nbsp;
+                    <span>{{idx+1}}</span>
+                    <br/>
+                    <span class="detailsLabel">ID</span>:
+                    &nbsp;
+                    <span class="detailsValue">{{marque.id}}</span>
+                    <br/>
+
+
+                    <span class="detailsLabel">Description</span>:
+                    &nbsp;
+                    <span class="detailsValue">{{marque.description}}</span>
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>
