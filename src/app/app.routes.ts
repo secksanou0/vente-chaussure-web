@@ -8,3 +8,4 @@ export const routes: Routes = [
     {path:'marques', component:ListMarque},
     {path:'chaussures', component:ListChaussures},
 ];
+//https://github.com/ssidibe-ept/vente-chaussure-web

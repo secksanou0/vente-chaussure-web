@@ -1,14 +1,19 @@
 <div >
     <div class="titre">Liste des marques</div>
     <div>
-        @for (marque of marques; 
-            track marque.id; 
+      @if (loading){
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>Chargement liste des marques ...
+      } @else {
+        @for (marque of marques;
+            track marque.id;
             let idx=$index;
             let paire=$even;
             let impaire=$odd;
             ) {
-            <div 
-                class="py-1" 
+            <div
+                class="py-1"
                 [class.ligneImpaire]="impaire"
                 [class.lignePaire]="paire">
                 <div>{{marque.nom}}</div>
@@ -16,6 +21,7 @@
                     Est paire : {{paire}}<br/>
                     Est impaire : {{impaire}}<br/>
                     <span>N°</span>:
+
                     &nbsp;
                     <span>{{idx+1}}</span>
                     <br/>
@@ -31,6 +37,7 @@
                 </div>
             </div>
         }
-        
+      }
+
     </div>
 </div>
