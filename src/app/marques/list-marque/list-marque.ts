@@ -12,6 +12,10 @@ import { MarqueService } from '../../services/marque-service';
 })
 export class ListMarque {
   marques:Marque[]=[];
+
+  //selectedMarque?:Marque;
+  selectedMarque:Marque|undefined;
+
   loading:boolean=false;
 
   constructor(
@@ -19,6 +23,10 @@ export class ListMarque {
     private cdr: ChangeDetectorRef
   ) {
     this.loadMarques();
+  }
+
+  setSelectedMarque(marque:Marque){
+    this.selectedMarque=marque;
   }
 
   loadMarques(){
@@ -38,5 +46,19 @@ export class ListMarque {
         this.cdr.detectChanges();
       }
     })
+  }
+
+  supprimeSelectedMarque() {
+    if(this.selectedMarque){
+      this.marqueService.supprimeMarque(this.selectedMarque).subscribe({
+        error: (error:any):void => {
+          console.log('erreur suppression marque');
+        },
+        complete: ()=> {
+          console.log('succès suppression marque');
+          this.loadMarques();
+        }
+      })
+    }
   }
 }

@@ -1,5 +1,8 @@
 <div >
-    <div class="titre">Liste des marques</div>
+    <div class="titre">
+      Liste des marques
+
+    </div>
     <div>
       @if (loading){
         <div class="spinner-border text-danger" role="status">
@@ -13,9 +16,12 @@
             let impaire=$odd;
             ) {
             <div
+                (click)="setSelectedMarque(marque)"
                 class="py-1"
                 [class.ligneImpaire]="impaire"
-                [class.lignePaire]="paire">
+                [class.lignePaire]="paire"
+                [class.selectedRow]="marque.id==selectedMarque?.id">
+
                 <div>{{marque.nom}}</div>
                 <div>
                     Est paire : {{paire}}<br/>
@@ -35,6 +41,15 @@
                     &nbsp;
                     <span class="detailsValue">{{marque.description}}</span>
                 </div>
+              @if (marque.id==selectedMarque?.id){
+              <div >
+                <button class="btn btn-secondary m-1">Modifier</button>
+                <button (click)="supprimeSelectedMarque()"
+                        class="btn btn-danger m-1">
+                  Supprimer
+                </button>
+              </div>
+              }
             </div>
         }
       }

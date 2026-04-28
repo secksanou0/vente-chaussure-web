@@ -4,7 +4,7 @@
 @use "../node_modules/bootstrap/scss/bootstrap.scss" as bt with(
     $primary: isep.$marronIsep,
     $secondary: isep.$beigeIsep
-) ; 
+) ;
 
 
 .titre{
@@ -25,7 +25,7 @@
     margin-bottom: isep.$hauteurFooter;
 }
 .piedPage{
-    @extend .fixed-bottom; @extend .bg-info; 
+    @extend .fixed-bottom; @extend .bg-info;
     @extend .text-light;
     height: isep.$hauteurFooter;
 }
@@ -43,7 +43,15 @@
     &:hover{
         background-color: lighten(bt.$success, 30%);
     }
+}
 
+.selectedRow{
+  @extend .bg-success;
+  @extend .text-light;
+  @extend .border;
+  @extend .border-2;
+  @extend .border-primary;
+  @extend .rounded-2;
 }
 
 
