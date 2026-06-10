@@ -1,1 +1,56 @@
-<p>ajout-marque works!</p>
+<form [formGroup]="marqueForm" style="width: 600px" class="m-2 p-2 shadow-lg mx-auto rouded-2">
+  <div class="h1 text-secondary">
+    Ajout marque
+  </div>
+  <div class="mb-3">
+    <label for="nomInput" class="form-label">Nom de la marque</label>
+    <input type="text"
+           formControlName="nom"
+           class="form-control"
+           [class.is-invalid]="marqueForm.get('nom')?.touched
+                  && marqueForm.get('nom')?.invalid"
+
+           [class.is-valid]="marqueForm.get('nom')?.touched
+                  && marqueForm.get('nom')?.valid"
+           id="nomInput" placeholder="Ex. Nike">
+    @if (marqueForm.get('nom')?.touched) {
+      @if (marqueForm.get('nom')?.errors){
+        @if(marqueForm.get('nom')?.errors?.['required']){
+          <div class="text-danger small">Le nom est obligatoire</div>
+        } @else if (marqueForm.get('nom')?.errors?.['minlength']) {
+          <div class="text-danger small">
+            Le nom doit avoir au moins {{marqueForm.get('nom')?.errors?.['minlength'].requiredLength}}
+            caracteres
+          </div>
+        }
+        @else {
+          <div class="text-danger small">Erreur sur le champ nom</div>
+        }
+      }
+    }
+    <!--div>
+      touché={{marqueForm.get("nom")?.touched}}<br/>
+      non touché={{marqueForm.get("nom")?.untouched}}<br/>
+      non modifier={{marqueForm.get("nom")?.pristine}}<br/>
+      modifier={{marqueForm.get("nom")?.dirty}}<br/>
+      valide={{marqueForm.get("nom")?.valid}}<br/>
+      invalid={{marqueForm.get("nom")?.invalid}}<br/>
+    </div-->
+  </div>
+  <div class="mb-3">
+    <label for="descTextarea" class="form-label">Description de la marque</label>
+    <textarea
+      formControlName="desc" class="form-control" id="descTextarea" rows="3"></textarea>
+  </div>
+
+  <div class="text-end">
+    <button class="btn btn-outline-danger me-2">Annuler</button>
+    <button
+      [disabled]="marqueForm.invalid"
+      class="btn btn-success">Enregistrer</button>
+  </div>
+</form>
+
+<div class="mt-5 text-center">
+ formulaire valide : {{marqueForm.valid}}
+</div>

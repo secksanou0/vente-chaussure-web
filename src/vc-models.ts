@@ -2,5 +2,5 @@
 export interface Marque{
     id?:number;
     nom:string;
-    description?:string;
+    description:string|null;
 }

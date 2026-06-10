@@ -1,7 +1,12 @@
 <div >
     <div class="titre">
       Liste des marques
-
+      <a href="#" [routerLink]="['/marques/new']">
+        <i  class="bi bi-plus-circle ms-2"></i>
+      </a>
+    </div>
+    <div class="text-danger h1">
+      {{errorMsg}}
     </div>
     <div>
       @if (loading){
